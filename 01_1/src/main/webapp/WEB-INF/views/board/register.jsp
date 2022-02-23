@@ -21,12 +21,21 @@
 
 					</div>
 					<div class="form-group">
-						<label>Writer</label> <input class="form-control" name='Writer' value="${userInfo.uname}" readonly="readonly">
+						<label>Writer</label> <input class="form-control" name='Writer'
+							value="${userInfo.uname}" readonly="readonly">
 
 					</div>
-					<button type="submit" class="btn btn-default">Submit
-						Button</button>
-					<button type="reset" class="btn btn-default">Reset Button</button>
+					<div class="form-group">
+
+						<div class="checkbox">
+							<label> <input type="checkbox" name="secret" >비밀글 설정
+								
+							</label>
+						</div>
+						</div>
+						<button type="submit" class="btn btn-default">Submit
+							Button</button>
+						<button type="reset" class="btn btn-default">Reset Button</button>
 				</form>
 			</div>
 		</div>

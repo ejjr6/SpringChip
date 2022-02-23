@@ -13,4 +13,5 @@ public class AskBoardVO {
 	private Date regdate;
 	private Date updatedate;
 	private int viewcnt;
+	private boolean secret;
 }

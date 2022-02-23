@@ -37,30 +37,63 @@
 						<th>작성일</th>
 						<th>수정일</th>
 						<th>조회수</th>
+
+
+
+
+
 					</tr>
 				</thead>
-			
+
 				<c:choose>
+
+
+
+
 					<c:when test="${!empty userInfo}">
-				
-					
 						<c:forEach items="${list}" var="ask">
-							<tr>
-								<td><c:out value="${ask.bno}" /></td>
-								<td><a href='/board/get?bno=<c:out value="${ask.bno}"/>'><c:out
-											value="${ask.title}" /></a></td>
-								<td><c:out value="${ask.writer}" /></td>
-								<td><f:formatDate pattern="yyyy-MM-dd HH:mm"
-										value="${ask.regdate}" /></td>
-								<td><f:formatDate pattern="yyyy-MM-dd HH:mm"
-										value="${ask.updatedate}" /></td>
-								<td><c:out value="${ask.viewcnt}" /></td>
-							</tr>
+
+							<c:choose>
+								<c:when test="${!ask.secret || ask.writer eq userInfo.uname}">
+									<tr>
+										<td><c:out value="${ask.bno}" /></td>
+										<c:choose>
+
+											<c:when test="${ask.writer eq userInfo.uname }">
+												<td><a
+													href='/board/get?bno=<c:out value="${ask.bno}"/>'><c:out
+															value="${ask.title}" /></a></td>
+											</c:when>
+											<c:otherwise>
+												<td><c:out value="${ask.title}" /></td>
+											</c:otherwise>
+										</c:choose>
+
+
+										<td><c:out value="${ask.writer}" /></td>
+										<td><f:formatDate pattern="yyyy-MM-dd HH:mm"
+												value="${ask.regdate}" /></td>
+										<td><f:formatDate pattern="yyyy-MM-dd HH:mm"
+												value="${ask.updatedate}" /></td>
+										<td><c:out value="${ask.viewcnt}" /></td>
+
+
+									</tr>
+
+								</c:when>
+								<c:otherwise>
+									<tr>
+										<td colspan="6" style="text-align: center;">비밀글 입니다. 작성자와
+											관리자만 확인 가능합니다.</td>
+									</tr>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
+
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<td colspan="5">로그인후 이용가능합니다.</td>
+							<td colspan="6">로그인후 이용가능합니다.</td>
 						</tr>
 					</c:otherwise>
 

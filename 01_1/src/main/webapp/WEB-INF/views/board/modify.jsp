@@ -48,6 +48,8 @@
 							value='<f:formatDate pattern ="yyyy/MM/dd" value="${board.updatedate}"/>'
 							readonly="readonly">
 					</div>
+					
+					
 
 					<button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
 

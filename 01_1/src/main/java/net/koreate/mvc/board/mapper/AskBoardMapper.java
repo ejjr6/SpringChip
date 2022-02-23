@@ -14,7 +14,7 @@ public interface AskBoardMapper {
 	@Select("select * from ask_board WHERE bno > 0")
 	public List<AskBoardVO> getList() throws Exception;
 
-	@Insert("insert into ask_board (title,content,writer) VALUES(#{title},#{content},#{writer})")
+	@Insert("insert into ask_board (title,content,writer,secret) VALUES(#{title},#{content},#{writer},#{secret})")
 	public void insert(AskBoardVO vo) throws Exception;
 
 	@Select("SELECT * FROM ask_board WHERE bno = ${bno}")
